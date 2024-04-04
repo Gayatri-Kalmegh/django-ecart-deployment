@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<br>
+<div  class="row mt-2 text:white" style="text-align: center ;">
+    <h1 class="text-white" style="font-style: oblique; font-family: cursive;">Welcome to UniMart</h1>
+</div>
+<br>
+<div style= "background-color:orange;" class="row mt-2">
+    <div class="col-md-3 p-3 ">
+      <h5 style="font-family: cursive;">Filter By Category</h5><hr>
+      <p><a href="/product">All</a></p>
+      <p><a href="/catfilter/1">Fashion</a></p>
+      <p><a href="/catfilter/2">Beauty and Grooming</a></p>
+      <p><a href="/catfilter/3">Healthcare</a></p>
+      <p><a href="/catfilter/4">Grocery</a></p>
+      <p><a href="/catfilter/5">Home and Furniture</a></p>
+      <p><a href="/catfilter/6">Toys and BabyCare</a></p>
+      <p><a href="/catfilter/7">Electronics</a></p>
+      <p><a href="/catfilter/8">Books and Media</a></p>
+      <br><br><br>
+      <h5 style="font-family: cursive;">Sort By Price</h5><hr>
+      <p><a href="/sortfilter/0">Low to High</a></p>
+      <p><a href="/sortfilter/1">High to Low</a></p>
+    </div>
+      
+    <div class="col-md-9 p-3 bg-light">
+      <div class="row">
+          {% if errmsg %}
+                  <div class="alert alert-danger" role="alert">
+                      {{errmsg}}
+                  </div>
+          {% endif %}
+        {% for i in data %}
+        <div class="col-md-3">
+          <div class="card" style="width: 100%;">
+            <img src="{{i.pimage.url}}" class="card-img-top" alt="..." height="200px">
+            <div class="card-body">
+              <h5 class="card-title">{{i.name}}</h5>
+              <p class="card-text"><b>Price : </b>{{i.price}}</p>
+              <a href="/product_detail/{{i.id}}" class="btn btn-primary">See detail</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock 'main' %}

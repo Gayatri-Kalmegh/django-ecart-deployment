@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+
+  <div class="row mt-3" style="background-color: white; ">
+    <div class="col-md-9 mx-auto">
+      <div class="row mt-5">
+        {% for i in data %}
+          <div class="col-md-5">
+            <img src="{{i.pimage.url}}" class="card-img-top" alt="..." height="200px">
+          </div>
+
+          <div class="col-md-7 mb-5">
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    {{success}}
+                </div>
+            {% endif %}
+
+            {% if errmsg %}
+                <div class="alert alert-danger" role="alert">
+                    {{errmsg}}
+                </div>
+            {% endif %}
+
+            <p><strong>Product Name : {{i.name}}</strong></p>
+
+            {% if i.cat == 1 %}
+              <p><strong>Category : </strong>Fashion</p>
+            {% elif i.cat == 2 %}
+              <p><strong>Category : </strong>Beauty and Grooming</p>
+            {% elif i.cat == 3 %}
+              <p><strong>Category : </strong>Healthcare</p>
+              {% elif i.cat == 4 %}
+              <p><strong>Category : </strong>Grocery</p>
+            {% elif i.cat == 5 %}
+              <p><strong>Category : </strong>Home and Furniture</p>
+              {% elif i.cat == 6 %}
+              <p><strong>Category : </strong>Toys and Babycare</p>
+            {% elif i.cat == 7 %}
+              <p><strong>Category : </strong>Electronics</p>
+              {% elif i.cat == 8 %}
+              <p><strong>Category : </strong>Books and Media</p>
+            {% endif %}
+
+            <p><strong>Detail : {{i.pdetail}}</strong></p>
+            <p><strong>Price : Rs. {{i.price}}</strong></p>
+
+            <a href="/addtocart/{{i.id}}"><button class="btn btn-danger">Add to Cart</button></a>
+            <a href="/viewcart"><button class="btn btn-danger">View Cart</button></a>
+            <a href="/product"><button class="btn btn-danger">Shop More</button></a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock 'main' %}
+
+
+
+  
+  

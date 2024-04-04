@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+        <div class="row mt-2" style="font-family: cursive;">
+            <h2 class="mb-4 text-white">About Us</h2><br>
+            <p class="text-white">Welcome to UniMart!</p>
+            <p class="text-white">The best online shopping Website ever!!</p>
+            <p class="text-white">we strive to provide the best shopping experience for our customers.</p>
+            <p class="text-white">Founded in 2024, our mission is to provide all the accessories that an everyone need.</p>
+            <p class="text-white">At Unimart, we believe in giving the needful things. </p>
+                <p class="text-white">We are dedicated to bringing you high-quality products with excellent customer service.</p>
+            <p class="text-white">Feel free to explore our website and discover a wide range of products that cater to your needs.</p><br><br><br><br>
+                <h2 class="mb-4 text-white">Our Team</h2>
+                <div class="row">
+                    <!-- Include individual team member details and photos here -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{% static 'images/steve smith.jpg' %}" class="card-img-top"  height="600px" width="600px">
+                            <div class="card-body ">
+                                <h5 class="card-title">Steve Smith</h5>
+                                <p class="card-text">Founder & CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{% static 'images/jhon doe.jpg' %}" class="card-img-top"  height="600px" width="600px">
+                            <div class="card-body">
+                                <h5 class="card-title ">Jhon Doe</h5>
+                                <p class="card-text ">Marketing Director</p>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+{% endblock 'main' %}
+        

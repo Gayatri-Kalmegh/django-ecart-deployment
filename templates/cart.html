@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<div class="row mt-2" style="background-color: white;" >
+    <div class="col-md-9">
+        {% for i in data %}
+            {% if forloop.counter == 1 %}
+                <div class="mt-3 p-3 " style="background-color:orange">
+                    <h5>CUSTOMER DETAIL</h5>
+                </div>
+                <div class="mt-2 p-3 shadow">
+                    <p ><strong>Customer Name : </strong>{{i.uid.username}}</p>
+                    <p><strong>Customer Email : </strong>{{i.uid.email}}</p>
+                </div>
+            {% endif %}
+        {% endfor %} 
+
+      <div class="mt-5 p-3 shadow">
+        {% for i in data %}
+            <div class="row mb-5 ">
+                <div class="col-md-5">
+                    <img src="{{i.pid.pimage.url}}" class="card-img-top" alt="..." height="250px">
+                </div>
+        
+                <div class="col-md-7">
+                    <p><strong>Product Name : </strong>{{i.pid.name}}</p>
+                    {% if i.pid.cat == 1 %}
+                        <p><strong>Category : </strong>Fashion</p>
+                    {% elif i.pid.cat == 2 %}
+                        <p><strong>Category : </strong>Beauty and Grooming</p>
+                    {% elif i.pid.cat == 3 %}
+                        <p><strong>Category : </strong>Healthcare</p>
+                    {% elif i.pid.cat == 4 %}
+                        <p><strong>Category : </strong>Grocery</p>
+                    {% elif i.pid.cat == 5 %}
+                        <p><strong>Category : </strong>Home and Furniture</p>
+                    {% elif i.pid.cat == 6 %}
+                        <p><strong>Category : </strong>Toys and Babycare</p>
+                    {% elif i.pid.cat == 7 %}
+                        <p><strong>Category : </strong>Electronics</p>
+                    {% elif i.pid.cat == 8 %}
+                        <p><strong>Category : </strong>Books and Media</p>
+                    {% endif %}
+                    <p><strong>Detail : </strong>{{i.pid.pdetail}}</p>
+                    <p><strong>Price(per item) : </strong>Rs. {{i.pid.price}}</p>
+
+                    <p>
+                    <strong>QTY : </strong>
+                    <a href="/updateqty/0/{{i.id}}"><button class="btn btn-danger"><b>-</b></button></a>
+                    <input type="text" value="{{i.qty}}">
+                    <a href="/updateqty/1/{{i.id}}"><button class="btn btn-danger"><b>+</b></button></a>
+                    </p>
+
+                    <p><a href="/remove/{{i.id}}"><button class="btn btn-danger">Remove</button></a></p>
+                </div>
+            </div><!--cart product 1-->
+        {% endfor %}
+      </div>     
+    </div>
+
+    <div class="col-md-3 p-3 shadow">
+        <div class="mt-3 p-3 " style="background-color:orange">
+            <h5>PRICE DETAIL</h5>
+        </div>
+      <p><strong>Price {{n}} items : </strong>Rs. {{total}}</p>
+      <p><strong>Total Price : </strong>Rs. {{total}}</p>
+
+      <a href="/placeorder"><button class="btn btn-danger">Place Order</button></a>
+    </div>
+  </div>
+  {% endblock 'main' %}
